@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../../../../public/assets/logo.png'
+import moment from 'moment';
 const Header = () => {
     return (
         <div>
@@ -8,6 +9,7 @@ const Header = () => {
                 <p className="text-secondary">
                     <small>Journalism Without Fear or Favour</small>
                 </p>
+                <p>{moment().format("dddd, MMMM D, YYYY, h:mm:ss a")}</p>
             </div>
         </div>
     );
