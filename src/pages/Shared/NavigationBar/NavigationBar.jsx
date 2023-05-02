@@ -4,7 +4,12 @@ import { AuthContext } from "../../../provider/AuthProvider";
 import { FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const NavigationBar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then()
+    .catch(error=>console.log(error.message))
+  }
   return (
     <Container>
       <Navbar
@@ -26,13 +31,13 @@ const NavigationBar = () => {
             </Nav>
             <Nav className="d-flex align-items-center">
               {user && (
-                <Nav.Link href="#deets">
+                <Link>
                   <FaUserAlt style={{ fontSize: "2rem" }}></FaUserAlt>
-                </Nav.Link>
+                </Link>
               )}
               <Nav.Link eventKey={2} href="#memes">
                 {user ? (
-                  <Button className="" variant="secondary">
+                  <Button onClick={handleLogOut} className="" variant="secondary">
                     Log Out
                   </Button>
                 ) : (

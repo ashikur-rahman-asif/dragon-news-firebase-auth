@@ -1,15 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext)
+  const navigate=useNavigate()
+    const handleLoginIn = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+    
+        signIn(email, password)
+          .then(result => {
+            const loggedUser = result.user;
+            form.reset()
+            navigate(('/category/0'), {replace: true});
+          })
+          .catch(error => {
+            console.log(error);
+          })
+      }
   return (
     <div>
       <h3 className="text-center mt-3">Please login</h3>
       <Container className="w-25 mx-auto">
-        <Form>
+        <Form onSubmit={handleLoginIn}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" name="email" required />
