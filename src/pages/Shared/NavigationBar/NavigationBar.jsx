@@ -35,19 +35,19 @@ const NavigationBar = () => {
                   <FaUserAlt style={{ fontSize: "2rem" }}></FaUserAlt>
                 </Link>
               )}
-              <Nav.Link eventKey={2} href="#memes">
+              <Link eventKey={2} >
                 {user ? (
                   <Button onClick={handleLogOut} className="" variant="secondary">
                     Log Out
                   </Button>
                 ) : (
-                  <Link to="login">
+                  <Link to="/login">
                     <Button className="" variant="secondary">
                       Login
                     </Button>
                   </Link>
                 )}
-              </Nav.Link>
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

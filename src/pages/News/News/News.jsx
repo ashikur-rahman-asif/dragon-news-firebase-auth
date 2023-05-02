@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link, useLoaderData } from "react-router-dom";
 import EditorsInsights from "../EditorsInsights/EditorsInsights";
+import NavigationBar from "../../Shared/NavigationBar/NavigationBar";
 
 const News = () => {
   const news = useLoaderData();
