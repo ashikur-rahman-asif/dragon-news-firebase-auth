@@ -41,7 +41,7 @@ const NewsCart = ({ news }) => {
       <Card.Footer className="text-muted d-flex  align-items-center">
         <div className="flex-grow-1">
           <Rating
-            placeholderRating={rating.number}
+            placeholderRating={Math.round(rating?.number || 0)}
             readonly
             emptySymbol={<FaRegStar/>}
                       placeholderSymbol={<FaStar/>}
